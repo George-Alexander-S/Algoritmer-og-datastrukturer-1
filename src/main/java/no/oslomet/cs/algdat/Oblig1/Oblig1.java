@@ -77,14 +77,32 @@ public class Oblig1 {
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
-        // if (kode som sjekker for permutasjoner. Hvis ikke 0 -> exception. Bruker trolig kode fra kompendiet her)
-        //throw new UnsupportedOperationException();
-        // if (hvis tabellen er tom --> returner 0, dog ikke feil)
-        int sum = 0;
-        for (int i = 0; i < a.length; i++) {
-
+        if (inversjoner(a) != 0) { // Sjekker for inversjoner i tabellen. Er det en inversjon, så er tabellen ikke sortert.
+            throw new IllegalStateException("Tabellen er ikke sortert");
+        } else if (a.length == 0) { // Sjekker at tabellen har en lengde.
+            return 0;               // Er den = 0 så skal det returneres 0, i henhold til oppgaveteksten.
+        } else {
+            int sum = 1;            // Her starter
+            for (int i = 1; i < a.length; i++) {
+                if (a[i] != a[i-1]) {
+                    sum ++;
+                }
+            }
+            return sum;
         }
-        return sum;
+    } // i iiiii
+
+    public static int inversjoner(int[] a)
+    {
+        int antall = 0;  // antall inversjoner
+        for (int i = 0; i < a.length - 1; i++)
+        {
+            for (int j = i + 1; j < a.length; j++)
+            {
+                if (a[i] > a[j]) antall++;  // en inversjon siden i < j
+            }
+        }
+        return antall;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
