@@ -57,19 +57,6 @@ public class Oblig1 {
     * I et array av lengde 1000, så skjer byttene i snitt 992 ganger.
      */
 
-    /*public static int snitt (int n) {
-
-        int antallTester = n;
-        int [] a;
-        int sum = 0;
-        int snitt;
-        for (int i = 0; i < antallTester; i++) {
-            a = randPerm(7);
-            sum += Oblig1.ombyttinger(a);
-        }
-        snitt = sum / antallTester;
-        return snitt;
-    }*/
     public static int ombyttinger(int[] a) {
         if (a.length == 0) { // Sjekker at lengden på tabellen er større enn 0
             throw new NoSuchElementException("Tabellen er tom og har dermed ingen verdier");
