@@ -82,7 +82,7 @@ public class Oblig1 {
         } else if (a.length == 0) { // Sjekker at tabellen har en lengde.
             return 0;               // Er den = 0 så skal det returneres 0, i henhold til oppgaveteksten.
         } else {
-            int sum = 1;            // Her starter
+            int sum = 1;            // Her starter jeg på 1. Dersom alle tall er like er det fortsatt 1 unikt tall.
             for (int i = 1; i < a.length; i++) {
                 if (a[i] != a[i-1]) {
                     sum ++;
