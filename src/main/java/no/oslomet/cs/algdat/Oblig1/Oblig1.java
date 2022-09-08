@@ -17,13 +17,16 @@ public class Oblig1 {
     /* Når blir det færrest ombyttinger?:
     * Færrest ombyttinger vil skje om tabellen skulle være ferdig sortert, fra minst til størst. Da vil vilkåret i if
     * setningen aldri oppfylles, da nåværende a[i] alltid vil være større enn a[i-1]. Dermed vil bytte aldri forekomme.*/
+
+
+
     public static int maks(int[] a) {
-        if (a.length == 0) { // Sjekker at lengden på tabellen er større enn 0
+        if (a.length == 0) {                    // Sjekker at lengden på tabellen er større enn 0
             throw new NoSuchElementException("Tabellen er tom og har dermed ingen verdier");
             // Brukte ALT for lang tid på å skjønne at jeg skulle bruke en annen feilmelding enn den som stod her fra før
         }
-        else { // Dersom tabellen ikke er tom, så kjører vi.
-            int max = a[0];        // Initialiserer max som 0.
+        else {                                  // Dersom tabellen ikke er tom, så kjører vi.
+            int max = a[0];                     // Initialiserer max som 0.
 
             for (int i = 1; i < a.length; i++) { // En forløkke som starter med indeks 1 og sammenligner med forrige indeks.
                 if (a[i-1] > a[i]) {
@@ -45,13 +48,14 @@ public class Oblig1 {
     * Det metoden gjorde var å ta inn et tall for innparameter som angir hvor mange permutasjoner som skal testes.
     *
     * Metoden teller antall tester, opp til det ønskede antallet.
-    * For hver iterasjon blir det generert et nytt random array med x antall tall. For hvert nye random
+    * For hver iterasjon blir det generert et nytt random array med x(innparameter) antall tall. For hvert nye random
     * array, vil metoden kjøre ombyttinger metoden under, for å telle byttene.
     * Til sist deler den summen av alle byttene for alle iterasjoner, på antallet tester. Da står vi igjen med et snitt.
     *
     * Jeg har testet med 5000 permutasjoner, på ulike array størrelser.
-    * Det jeg merket meg, var at med et lite array (.length=5) så blir snittet lavt. 2 bytter. Dersom man øker til et array
-    * av .length=7, så øker snittet til 4 bytter. Et array av .length=10 gir allerede 7 bytter i snitt.*/
+    * Det jeg merket meg var at byttene øker veldig fort i takt med størrelsen på arrayet. Effektiviteten er således svært lav.
+    * I et array av lengde 1000, så skjer byttene i snitt 992 ganger.
+     */
 
     /*public static int snitt (int n) {
 
