@@ -77,7 +77,14 @@ public class Oblig1 {
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
-        throw new UnsupportedOperationException();
+        // if (kode som sjekker for permutasjoner. Hvis ikke 0 -> exception. Bruker trolig kode fra kompendiet her)
+        //throw new UnsupportedOperationException();
+        // if (hvis tabellen er tom --> returner 0, dog ikke feil)
+        int sum = 0;
+        for (int i = 0; i < a.length; i++) {
+
+        }
+        return sum;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
