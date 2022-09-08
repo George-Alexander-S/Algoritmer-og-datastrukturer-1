@@ -60,7 +60,8 @@ public class Oblig1 {
     public static int ombyttinger(int[] a) {
         if (a.length == 0) { // Sjekker at lengden på tabellen er større enn 0
             throw new NoSuchElementException("Tabellen er tom og har dermed ingen verdier");
-        } else {
+        }
+        else {
             int bytter = 0;        // Initialiserer antall bytter som 0.
 
             for (int i = 1; i < a.length; i++) {
@@ -79,9 +80,11 @@ public class Oblig1 {
     public static int antallUlikeSortert(int[] a) {
         if (inversjoner(a) != 0) { // Sjekker for inversjoner i tabellen. Er det en inversjon, så er tabellen ikke sortert.
             throw new IllegalStateException("Tabellen er ikke sortert");
-        } else if (a.length == 0) { // Sjekker at tabellen har en lengde på over 0.
+        }
+        else if (a.length == 0) { // Sjekker at tabellen har en lengde på over 0.
             return 0;               // Er den == 0 så skal det returneres 0, i henhold til oppgaveteksten.
-        } else {
+        }
+        else {
             int sum = 1;            // Her starter jeg på 1. Om alle tall hadde vært like er det fortsatt 1 unikt tall.
             for (int i = 1; i < a.length; i++) {
                 if (a[i] != a[i-1]) {
@@ -94,20 +97,55 @@ public class Oblig1 {
 
     public static int inversjoner(int[] a)  // Programkode 1.3.2 a) fra https://www.cs.hioa.no/~ulfu/appolonius/kap1/3/kap13.html#1.3.2
     {
-        int antall = 0;  // antall inversjoner
+        int antall = 0;
         for (int i = 0; i < a.length - 1; i++)
         {
             for (int j = i + 1; j < a.length; j++)
             {
-                if (a[i] > a[j]) antall++;  // en inversjon siden i < j
+                if (a[i] > a[j]) antall++;
             }
         }
         return antall;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
+
+    /*Min første tanke var å lage en hjelpetabell, men det var før jeg leste hele oppgaveteksten. Kanskje det funker å
+    bruke 2 for løkker. Ene sjekker om 2 indekser er like (starter med 1 mot 0). Dersom de ikke er like, så går jeg inn i
+    den andre for løkken, og sjekker fra j=0 a[j] ikke er likt inneholdet i a[i], deretter inkrementeres j i tråd med
+    progresjonen i første for-løkken.
+
+     Etter å ha debugget hva som skjedde i andre for løkkens if setning, så gikk det opp for meg, at det ikke var nok å ha
+     en else som inkrementerte sum, så lenge a[j] ikke var lik a[i]. Den andre for løkken går jo gjennom alle tallene mot
+     a[i], og mange av de er jo nettopp IKKE like a[i], og da fikk jeg en "treff" som inkrementerte sum, selv om tallet
+     hadde et duplikat ellers i tabellen. Løsningen ble derfor en boolean "unik". Så lenge den er true, så inkrementerer sum. Og
+     med en gang den andre for-løkken får en duplikat, så blir den gjort til false.
+
+     Det måtte enda en runde med debug til før jeg skjønte at jeg måtte jo ha noe som resatte boolean til true, så da
+     definerte jeg heller den i første for-løkken, da vil den starte som true i hver iterasjon.*/
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length == 0) { // Sjekker om tabellen er tom, da returneres bare 0 iht oppgavens krav.
+            return 0;
+        }
+        else {
+            int sum = 1;    // Starter med sum = 1. Da får jeg returnert 1 om tabellen bare skulle inneholde 1 tall.
+
+            for (int i = 1; i < a.length; i++) {    // Første for-løkken
+                boolean unik = true;    // Denne avgjør om det skal inkrementeres eller ikke.
+                if (a[i] != a[i-1]) {   // Dersom tallene ikke er like, sjekkes talet mot tidligere tall i neste for-løkke
+                    for (int j = 0; j < i; j++) {
+                        if (a[j] == a[i]) {     // Dersom jeg får en match tidligere i tabellen, vil unik=false, og vi bryter ut.
+                            unik = false;
+                            break;
+                        }
+                    }
+                    if (unik) {     // Dersom denne fortsatt er unik (true) etter å ha vært gjennom andre løkken:
+                        sum ++;     // så inkrementerer jeg.
+                    }
+                }
+            }
+            return sum;     // Antallet unike tall returneres
+        }
     }
 
     ///// Oppgave 4 //////////////////////////////////////
