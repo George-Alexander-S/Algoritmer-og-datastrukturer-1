@@ -79,10 +79,10 @@ public class Oblig1 {
     public static int antallUlikeSortert(int[] a) {
         if (inversjoner(a) != 0) { // Sjekker for inversjoner i tabellen. Er det en inversjon, så er tabellen ikke sortert.
             throw new IllegalStateException("Tabellen er ikke sortert");
-        } else if (a.length == 0) { // Sjekker at tabellen har en lengde.
-            return 0;               // Er den = 0 så skal det returneres 0, i henhold til oppgaveteksten.
+        } else if (a.length == 0) { // Sjekker at tabellen har en lengde på over 0.
+            return 0;               // Er den == 0 så skal det returneres 0, i henhold til oppgaveteksten.
         } else {
-            int sum = 1;            // Her starter jeg på 1. Dersom alle tall er like er det fortsatt 1 unikt tall.
+            int sum = 1;            // Her starter jeg på 1. Om alle tall hadde vært like er det fortsatt 1 unikt tall.
             for (int i = 1; i < a.length; i++) {
                 if (a[i] != a[i-1]) {
                     sum ++;
@@ -90,9 +90,9 @@ public class Oblig1 {
             }
             return sum;
         }
-    } // i iiiii
+    }
 
-    public static int inversjoner(int[] a)
+    public static int inversjoner(int[] a)  // Programkode 1.3.2 a) fra https://www.cs.hioa.no/~ulfu/appolonius/kap1/3/kap13.html#1.3.2
     {
         int antall = 0;  // antall inversjoner
         for (int i = 0; i < a.length - 1; i++)
