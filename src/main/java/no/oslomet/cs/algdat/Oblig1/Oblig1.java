@@ -149,6 +149,9 @@ public class Oblig1 {
     }
 
     ///// Oppgave 4 //////////////////////////////////////
+    /*Kanskje jeg får løst dette ved å finne det til enhver tid minste tallet i tabellen, så sjekke om tallets modulus 2 er null. Altså if (n % 2 == 0), da vet jeg om det er partall eller oddetall.
+    * Foreløpig litt usikker på hvordan det blir å plassere tallet tilbake i tabellen. Vi kan bruke a[i] greit nok for oddetallene som skal til venstre. Men hvordan vet jeg hvor mange oddetall det er, og hvor
+    * partallene skal starte */
     public static void delsortering(int[] a) {
         throw new UnsupportedOperationException();
     }
