@@ -149,15 +149,74 @@ public class Oblig1 {
     }
 
     ///// Oppgave 4 //////////////////////////////////////
-    /*Kanskje jeg får løst dette ved å finne det til enhver tid minste tallet i tabellen, så sjekke om tallets modulus 2 er null. Altså if (n % 2 == 0), da vet jeg om det er partall eller oddetall.
-    * Foreløpig litt usikker på hvordan det blir å plassere tallet tilbake i tabellen. Vi kan bruke a[i] greit nok for oddetallene som skal til venstre. Men hvordan vet jeg hvor mange oddetall det er, og hvor
-    * partallene skal starte. */
+    /* Kodesnutter fra kompendiet:
+    - kvikksortering, Programkode 1.3.9 h)
+    - sParter0, Programkode 1.3.9 f)
+    - parter0, Programkode 1.3.9 a)*/
     public static void delsortering(int[] a) {
         // Implementere kvikksortering, med tilhørende kode som avhenger av det fra kompendiet
         // Sortere tabellen, stigende.
+        kvikksortering(a);
+        int partall = 0;
+        int oddetall = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 == 0) {
+                partall ++;
+            } else {
+                oddetall ++;
+            }
+        }
         // Løpe gjennom hive partall/oddetall på hver sin side av en ny skilleverdi.
         // Sortere hver halvdel igjen?
+        // Trenger jeg å vite hvor mange partall/oddetall det er?
     }
+
+    private static void kvikksortering0(int [] a, int v, int h) {  // Private - Programkode 1.3.9 h)
+        if (v >= h) {
+            return; // Dersom a[v:h] er tomt, eller har maks ett element
+        }
+        int k = sParter0(a, v, h, (v + h) / 2);     // Bruker midterste indeks
+        kvikksortering0(a, v, k-1); // Sorterer intervallet til venstre for k. a[v:k-1]
+        kvikksortering0(a, k+1, h); // Sorterer intervallet til høyre for k. a[k+1:h]
+    }
+
+    public static void kvikksortering(int[] a, int fra, int til) {
+
+        kvikksortering0(a, fra, til-1); // v = fra, h = til - 1
+    }
+
+    public static void kvikksortering(int[] a) {
+        kvikksortering0(a, 0, a.length - 1);
+    }
+
+    private static int sParter0(int[] a, int v, int h, int indeks) {
+        bytt(a, indeks, h);           // skilleverdi a[indeks] flyttes bakerst
+        int pos = parter0(a, v, h - 1, a[h]);  // partisjonerer a[v:h - 1] - oppgir da bakerste indeks som skilleverdi
+        bytt(a, pos, h);              // bytter for å få skilleverdien på rett plass
+        return pos;                   // returnerer posisjonen til skilleverdien
+    }
+
+    private static int parter0(int[] a, int v, int h, int skilleverdi) {
+        while (true) {
+            while (v <= h && a[v] < skilleverdi) { // h er stoppverdi for v
+                v++;
+            }
+            while (v <= h && a[h] >= skilleverdi) { // v er stoppverdi for h
+                h--;
+            }
+            if (v < h) {
+                bytt(a, v, h);
+                v++;
+                h--;
+            }
+            else return v;
+        }
+    }
+
+    public static void bytt(int[] a, int i, int j) { // Programkode 1.1.8 d
+        int temp = a[i]; a[i] = a[j]; a[j] = temp;
+    }
+
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
