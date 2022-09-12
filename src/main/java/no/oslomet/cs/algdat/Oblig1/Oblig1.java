@@ -149,29 +149,35 @@ public class Oblig1 {
     }
 
     ///// Oppgave 4 //////////////////////////////////////
-    /* Kodesnutter fra kompendiet:
+    /* Kodesnutter som er implementert fra kompendiet:
     - kvikksortering, Programkode 1.3.9 h)
     - sParter0, Programkode 1.3.9 f)
-    - parter0, Programkode 1.3.9 a)*/
+    - parter0, Programkode 1.3.9 a)
+     - bytt, Programkode 1.1.8 d*/
     public static void delsortering(int[] a) {
-        // Implementere kvikksortering, med tilhørende kode som avhenger av det fra kompendiet
-        // Sortere tabellen, stigende.
-        kvikksortering(a);
-        int partall = 0;
-        int oddetall = 0;
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] % 2 == 0) {
-                partall ++;
-            } else {
-                oddetall ++;
+        kvikksortering(a);      // Her sorterer jeg tabellen i sin helhet.
+        int oddetall = 0;       // Assigner oddetall teller og en temp til bruk i for-løkken. Denne variabelen vil fungere som en slags veiviser for hvor oddetallene skal inn senere.
+        int temp;
+        for (int i = 0; i < a.length; i++) {        // Løper gjennom arrayet. Gjør ingenting om jeg finner et partall.
+            if (a[i] % 2 == 0) { // Partallsjekken
+                //      Er det partall så lar jeg tallene være for nå.
+            }
+            else {      // Er det ikke partall, må det være oddetall. Da bytter jeg rundt, og fyller arrayet fra venstre (fra 0).
+                        // Det som er litt kjipt er at jeg er ganske sikker på at oddetallene bytter plass med seg selv dersom tabellen skulle kun bestå av oddetall. Men det klarer jeg ikke å unngå per nå.
+                        // Har lyst å bruke bytt metoden her, men surrer med innparameterne. Blir sånn enn så lenge. #trøtt
+                        // Det jeg gjør her, er at jeg starter jo med oddetall som = 0, som også fungerer som "indeks 0", fordi jeg vil starte å fylle tabellen med oddetall først. Slik oppgaven vil ha den.
+                temp = a[oddetall];     // Da "mellomlagrer" jeg først det som er i denne indeksen.
+                a[oddetall] = a[i];     // Så overskriver jeg det med a[i], som må være et oddetall, fordi vi er inne i elsen.
+                a[i] = temp;            // Her setter vi så tallet vi fjernet fra første linja i elsen, der hvor oddetallet var.
+                oddetall++;             // Så inkrementerer jeg denne variabelen. Neste gang vi er inne i elsen, vil vi da fylle neste indeksen
             }
         }
-        // Løpe gjennom hive partall/oddetall på hver sin side av en ny skilleverdi.
-        // Sortere hver halvdel igjen?
-        // Trenger jeg å vite hvor mange partall/oddetall det er?
+        // Hvis alt gikk riktig for seg, vil oddetallene (dersom de finnes) være sortert i stigende rekkefølge fra venstre i tabellen.
+        // Da kan jeg sortere de resterende tallene (som i teorien skal være partallene)
+        kvikksortering(a, oddetall, a.length);
     }
 
-    private static void kvikksortering0(int [] a, int v, int h) {  // Private - Programkode 1.3.9 h)
+    private static void kvikksortering0(int [] a, int v, int h) {  // Kompendiekode - Programkode 1.3.9 h)
         if (v >= h) {
             return; // Dersom a[v:h] er tomt, eller har maks ett element
         }
@@ -180,23 +186,22 @@ public class Oblig1 {
         kvikksortering0(a, k+1, h); // Sorterer intervallet til høyre for k. a[k+1:h]
     }
 
-    public static void kvikksortering(int[] a, int fra, int til) {
-
+    public static void kvikksortering(int[] a, int fra, int til) { // Kompendiekode - Her har jeg fjernet fratilKontroll delen fra koden
         kvikksortering0(a, fra, til-1); // v = fra, h = til - 1
     }
 
-    public static void kvikksortering(int[] a) {
+    public static void kvikksortering(int[] a) { // Kompendiekode
         kvikksortering0(a, 0, a.length - 1);
     }
 
-    private static int sParter0(int[] a, int v, int h, int indeks) {
+    private static int sParter0(int[] a, int v, int h, int indeks) {  // Kompendiekode - Programkode 1.3.9 f)
         bytt(a, indeks, h);           // skilleverdi a[indeks] flyttes bakerst
         int pos = parter0(a, v, h - 1, a[h]);  // partisjonerer a[v:h - 1] - oppgir da bakerste indeks som skilleverdi
         bytt(a, pos, h);              // bytter for å få skilleverdien på rett plass
         return pos;                   // returnerer posisjonen til skilleverdien
     }
 
-    private static int parter0(int[] a, int v, int h, int skilleverdi) {
+    private static int parter0(int[] a, int v, int h, int skilleverdi) { // Kompendiekode - Programkode 1.3.9 a)
         while (true) {
             while (v <= h && a[v] < skilleverdi) { // h er stoppverdi for v
                 v++;
@@ -212,7 +217,6 @@ public class Oblig1 {
             else return v;
         }
     }
-
     public static void bytt(int[] a, int i, int j) { // Programkode 1.1.8 d
         int temp = a[i]; a[i] = a[j]; a[j] = temp;
     }
