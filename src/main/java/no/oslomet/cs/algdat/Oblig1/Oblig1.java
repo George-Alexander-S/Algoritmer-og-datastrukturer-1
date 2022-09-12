@@ -69,7 +69,7 @@ public class Oblig1 {
                     int temp = a[i];
                     a[i] = a[i-1];
                     a[i-1] = temp;
-                    bytter ++;
+                    bytter ++;          // Inkrementerer etter et bytte.
                 }
             }
             return bytter;
@@ -153,38 +153,10 @@ public class Oblig1 {
     * Foreløpig litt usikker på hvordan det blir å plassere tallet tilbake i tabellen. Vi kan bruke a[i] greit nok for oddetallene som skal til venstre. Men hvordan vet jeg hvor mange oddetall det er, og hvor
     * partallene skal starte. */
     public static void delsortering(int[] a) {
-        int antPartall = 0;
-        for (int tall : a) {
-            if (tall % 2 == 0) {
-                antPartall++;
-            }
-        }
-
-        for (int i = 0; i < a.length; i++) {
-            int tall = min(a, i, a.length);
-            if (tall % 2 == 0) {
-                a[antPartall+i] = tall;
-            }
-            else {
-                a[i] = tall;
-            }
-        }
-    }
-
-    public static int min(int[] a, int fra, int til) {    /*Minimum metode 1 - Fra kompendiet, oppgave 1.1.2.2 */
-        if (fra < 0 || til > a.length || fra >= til)
-            throw new IllegalArgumentException("Illegalt intervall!");
-
-        int m = fra;             // indeks til minste verdi i a[fra:til>
-        int minverdi = a[fra];   // minste verdi i a[fra:til>
-
-        for (int i = fra + 1; i < til; i++) if (a[i] < minverdi)
-        {
-            m = i;               // indeks til minste verdi oppdateres
-            minverdi = a[m];     // minste verdi oppdateres
-        }
-
-        return minverdi;  // verdien til minste verdi i a[fra:til>
+        // Implementere kvikksortering, med tilhørende kode som avhenger av det fra kompendiet
+        // Sortere tabellen, stigende.
+        // Løpe gjennom hive partall/oddetall på hver sin side av en ny skilleverdi.
+        // Sortere hver halvdel igjen?
     }
 
     ///// Oppgave 5 //////////////////////////////////////
