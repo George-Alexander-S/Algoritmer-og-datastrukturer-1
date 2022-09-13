@@ -227,17 +227,19 @@ public class Oblig1 {
 
 
     ///// Oppgave 5 //////////////////////////////////////
-    // Prøver å se om rotasjons metoden fra kompendiet virker for dette tilfellet. Erstatter et innparameter fra metodekallet med en instansiert variabel = 1,
-    // da tabellen ifølge oppgaven skal forsyves med kun 1 enhet.
-    public static void rotasjon(char[] a) {
-        /*throw new UnsupportedOperationException();*/
-        int enEnhet = 1;
-        int n = a.length;
-        char [] b = Arrays.copyOfRange(a, n-enEnhet, n);
-        for (int i = n -1; i >= enEnhet; i--) {
+    // Denne oppgaven ble greit løst med en litt modifisert versjon av kompendiets programkode 1.3.13 b)
+    public static void rotasjon(char[] a) {     // en lett modifisert variant av kompendiets programkode 1.3.13 b)
+
+        int enEnhet = 1;                                            // Denne brukes da vi kun skal rotere med én enhet.
+        int n = a.length;                                           // instansierer lengden på arrayet.
+        if (n < 2)  {
+            return;                                                 // Sjekker at arrayet ikke er tomt, eller inneholder kun én verdi.
+        }
+        char [] b = Arrays.copyOfRange(a, n-enEnhet, n);       // Kopierer det som skal skyves ut av tabellen.
+        for (int i = n -1; i >= enEnhet; i--) {                     // Forskyver en og en verdi i indeksen en enhet av gangen. Helt frem til a[1] har kopiert det som er i a[0]
             a[i] = a[i - enEnhet];
         }
-        System.arraycopy(b, 0, a, 0, enEnhet);
+        System.arraycopy(b, 0, a, 0, enEnhet);        // Kopierer tilbake det som ble skjøvet ut, til starten av arrayet.
     }
 
     ///// Oppgave 6 //////////////////////////////////////
