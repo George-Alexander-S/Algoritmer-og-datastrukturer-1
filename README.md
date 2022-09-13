@@ -10,8 +10,11 @@ Oppgaven er levert av følgende student:
 
 
 # Oppgavebeskrivelse
-Her følger også svar på de teoretiske spørsmålene som tas opp i oppgavetekstene.
-Den mer detaljerte fremgangsmåten rundt teoretiske spørsmål er tatt opp i kildkodekommentarer.
+Her følger en kort beskrivelse av hvordan hver oppgave har blitt løst.
+
+En mer detaljert redegjørelse for hver oppgave finnes i relevante linjer i form av kildekodekommentarer.
+
+Den mer detaljerte fremgangsmåten rundt teoretiske spørsmål er også tatt opp i kildkodekommentarer.
 
 Kildekode markert med "Programkode n-n-n" er fra kompendiet: https://www.cs.hioa.no/~ulfu/appolonius/index.html
 
@@ -66,3 +69,7 @@ resten av tabellen.
 
 90% av tidsbruk i denne oppgaven gikk til å forstå den relevante koden fra kompendiet og implementere denne.
 Resten kom relativt raskt på plass.
+
+Oppgave 5:
+
+Denne oppgaven har jeg løst ved å bruke en litt modifisert variant av programkode 1.3.13 b) fra kompendiet.
