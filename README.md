@@ -45,4 +45,24 @@ Deretter vil en for løkke sjekke om det er forskjeller mellom verdiene i indeks
 vil være antallet unike tall. Tellingen starter fra 1. Dersom alle tall var like ville den ikke fått noen "treff" men
 likevel korrekt returnert 1.
 
-Oppgave 3: Her hadde jeg tenkt å starte med en hjelpetabell, men så ser jeg at det ikke er lov.
+Oppgave 3:
+
+Denne oppgaven ble løst ved å bruke 2 for-løkker, en teller som teller unike tall, samt en boolean som hjelpevariabel.
+Løkken sjekker verdiene i tabellen mot hverandre. Dersom 2 verdier er ulike, så går den inn i en ny for-løkke for å
+sjekke tidligere tall i tabellen. Dersom den ikke finner en duplikat i andre for-løkken vil boolean unik forbli uendret (true)
+og sum variabelen inkrementeres.
+
+Oppgave 4:
+
+Til denne oppgaven har jeg implementert en del kode fra kompendiet. quicksort, partere og bytt.
+
+En hjelpevariabel (int) jeg kalte oddetall ble brukt for å plassere oddetallene fra 0 og utover. 
+Først sorterte jeg hele tabellen med en quicksort. Deretter løp jeg gjennom arrayet og plukka ut partallene med en if og modulus av 2.
+Dersom jeg kom over tall som ikke var partall (dermed oddetall), så ble de plassert i tabellen fra 0'te indeks og utover,
+ved å bruke bytt metoden og hjelpevariabelen oddetall.
+
+Når det var gjort, så skal det i teorien kun være partall (hvis noen) igjen i tabellen. Da kjørte jeg en quicksort med
+resten av tabellen.
+
+90% av tidsbruk i denne oppgaven gikk til å forstå den relevante koden fra kompendiet og implementere denne.
+Resten kom relativt raskt på plass.
