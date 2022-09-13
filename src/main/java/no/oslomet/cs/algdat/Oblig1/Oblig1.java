@@ -153,27 +153,30 @@ public class Oblig1 {
     - kvikksortering, Programkode 1.3.9 h)
     - sParter0, Programkode 1.3.9 f)
     - parter0, Programkode 1.3.9 a)
-     - bytt, Programkode 1.1.8 d*/
+    - bytt, Programkode 1.1.8 d*/
     public static void delsortering(int[] a) {
         kvikksortering(a);      // Her sorterer jeg tabellen i sin helhet.
-        int oddetall = 0;       // Assigner oddetall teller og en temp til bruk i for-løkken. Denne variabelen vil fungere som en slags veiviser for hvor oddetallene skal inn senere.
-        int temp;
+        int oddetall = 0;       // Assigner teller til bruk i for-løkken. Denne variabelen vil fungere som en slags veiviser for hvor oddetallene skal inn senere.
         for (int i = 0; i < a.length; i++) {        // Løper gjennom arrayet. Gjør ingenting om jeg finner et partall.
             if (a[i] % 2 == 0) { // Partallsjekken
-                //      Er det partall så lar jeg tallene være for nå.
+                        // Er det partall så lar jeg tallene være for nå.
             }
-            else {      // Er det ikke partall, må det være oddetall. Da bytter jeg rundt, og fyller arrayet fra venstre (fra 0).
+            else {      // Er det ikke partall, må det være oddetall.
+                        // I elsen, så fyller jeg fra 0'te indeks med oddetallene vi måtte finne underveis. Det gjør jeg med bytt metoden.
+                bytt(a, oddetall, i);
+                oddetall++;
                         // Det som er litt kjipt er at jeg er ganske sikker på at oddetallene bytter plass med seg selv dersom tabellen skulle kun bestå av oddetall. Men det klarer jeg ikke å unngå per nå.
-                        // Har lyst å bruke bytt metoden her, men surrer med innparameterne. Blir sånn enn så lenge. #trøtt
-                        // Det jeg gjør her, er at jeg starter jo med oddetall som = 0, som også fungerer som "indeks 0", fordi jeg vil starte å fylle tabellen med oddetall først. Slik oppgaven vil ha den.
-                temp = a[oddetall];     // Da "mellomlagrer" jeg først det som er i denne indeksen.
-                a[oddetall] = a[i];     // Så overskriver jeg det med a[i], som må være et oddetall, fordi vi er inne i elsen.
-                a[i] = temp;            // Her setter vi så tallet vi fjernet fra første linja i elsen, der hvor oddetallet var.
-                oddetall++;             // Så inkrementerer jeg denne variabelen. Neste gang vi er inne i elsen, vil vi da fylle neste indeksen
+                        // Det bytt metoden gjør, beskrives de følgende linjene:
+                        // Jeg har fra før assignet oddetall som = 0, som fungerer som "indeks 0", fordi jeg vil starte å fylle tabellen med oddetall først. Slik oppgaven vil ha den.
+                        // Steg 1: temp = a[oddetall]; Da mellomlagres det som er i a[oddetall]
+                        // Steg 2: a[oddetall] = a[i]; Så overskrives det med a[i], som må være et oddetall, fordi koden er inne i elsen.
+                        // Steg 3: a[i] = temp; Her settes så tallet som ble fjernet fra steg 1. Verdiene har nå byttet plass.
+                        // Deretter inkrementerer jeg oddetall variabelen. Neste gang man er i elsen, vil neste indeks fylles med et eventuelt oddetall.
             }
         }
         // Hvis alt gikk riktig for seg, vil oddetallene (dersom de finnes) være sortert i stigende rekkefølge fra venstre i tabellen.
-        // Da kan jeg sortere de resterende tallene (som i teorien skal være partallene)
+        // Da kan jeg sortere de resterende tallene (som i teorien skal være partallene) med en quicksort på resten av tabellen.
+        // Merker meg at jeg må bruke oddetall og ikke oddetall+1 som start posisjon. Det er fordi jeg allerede har inkrementert oddetall variabelen på slutten av else.
         kvikksortering(a, oddetall, a.length);
     }
 
@@ -186,13 +189,13 @@ public class Oblig1 {
         kvikksortering0(a, k+1, h); // Sorterer intervallet til høyre for k. a[k+1:h]
     }
 
-    public static void kvikksortering(int[] a, int fra, int til) { // Kompendiekode - Her har jeg fjernet fratilKontroll delen fra koden
+    public static void kvikksortering(int[] a, int fra, int til) { // Kompendiekode - 1.3.9 - Her har jeg fjernet fratilKontroll delen fra koden
         kvikksortering0(a, fra, til-1); // v = fra, h = til - 1
     }
 
     public static void kvikksortering(int[] a) { // Kompendiekode
         kvikksortering0(a, 0, a.length - 1);
-    }
+    } // Kompendiekode - 1.3.9
 
     private static int sParter0(int[] a, int v, int h, int indeks) {  // Kompendiekode - Programkode 1.3.9 f)
         bytt(a, indeks, h);           // skilleverdi a[indeks] flyttes bakerst
@@ -217,7 +220,7 @@ public class Oblig1 {
             else return v;
         }
     }
-    public static void bytt(int[] a, int i, int j) { // Programkode 1.1.8 d
+    public static void bytt(int[] a, int i, int j) { // Kompendiekode - Programkode 1.1.8 d
         int temp = a[i]; a[i] = a[j]; a[j] = temp;
     }
 
