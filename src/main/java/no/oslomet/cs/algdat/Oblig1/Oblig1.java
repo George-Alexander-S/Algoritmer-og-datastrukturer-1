@@ -3,6 +3,7 @@ package no.oslomet.cs.algdat.Oblig1;
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -226,8 +227,17 @@ public class Oblig1 {
 
 
     ///// Oppgave 5 //////////////////////////////////////
+    // Prøver å se om rotasjons metoden fra kompendiet virker for dette tilfellet. Erstatter et innparameter fra metodekallet med en instansiert variabel = 1,
+    // da tabellen ifølge oppgaven skal forsyves med kun 1 enhet.
     public static void rotasjon(char[] a) {
-        throw new UnsupportedOperationException();
+        /*throw new UnsupportedOperationException();*/
+        int enEnhet = 1;
+        int n = a.length;
+        char [] b = Arrays.copyOfRange(a, n-enEnhet, n);
+        for (int i = n -1; i >= enEnhet; i--) {
+            a[i] = a[i - enEnhet];
+        }
+        System.arraycopy(b, 0, a, 0, enEnhet);
     }
 
     ///// Oppgave 6 //////////////////////////////////////
