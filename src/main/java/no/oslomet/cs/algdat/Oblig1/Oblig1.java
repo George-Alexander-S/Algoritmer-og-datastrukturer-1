@@ -278,28 +278,27 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        /*int sLengde = s.length;
-        int lengde = 0;
-        for (int i = 0; i < sLengde; i++) {
-            lengst = s[i].length();
-        }
         String ut = "";
+        int sLengde = s.length;
+        int lengst = 0;
+        for (int i = 0; i < sLengde; i++) {
+            int ordlengde = s[i].length();
+            if (ordlengde > lengst) {
+                lengst = ordlengde;
+            }
+        }
         if (sLengde == 0) {
-            return ut;
+            ut += "";
         }
-        for (int i = 0; i < sLengde; i++) { // i er antall "ord" i objektet.
-            int jLengde = s[i].length(); // inne i første ordet.
-            if (jLengde == 0) { // hvis ordet er tomt: ut+= ""
-                ut += "";
-            }
-            for (int j = teller; j < jLengde;) { // j er antall bokstaver, i hvert ord.
-                ut += s[i].charAt(j);
-                i++;
-                teller++;
-                jLengde = s[i].length();
+
+        for (int i = 0; i < lengst; i++) {
+            for (int j = 0; j < s.length; j++) {
+                if (s[j].length() > i) {
+                    ut += s[j].charAt(i);
+                }
             }
         }
-        return ut;*/
+        return ut;
     }
 
     ///// Oppgave 8 //////////////////////////////////////
