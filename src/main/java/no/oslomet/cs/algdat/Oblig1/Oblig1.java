@@ -248,9 +248,32 @@ public class Oblig1 {
     }
 
     ///// Oppgave 7 //////////////////////////////////////
-    /// 7a)
+    /// 7a) Slik jeg forstår denne oppgaven er det ingenting som skal sorteres. Det skal kun lages en ny tabell fra inntabellene, med annenhvert element fra hver tabell.
+    // Jeg tror at kompendiets Programkode 1.3.11 a) er en god match for denne oppgaven. Problemet er at den programkoden er basert på arrays, mens oppgaven her ønsker å ta for seg strings
+    // Videre oppdaget jeg også at kompendiets oppgave 1b fra kapittel 1.3.11 tar for seg nøyaktig den problemstillingen som denne oppgaven.
+    // Der er det brukt stringbuilder og appends etc i løsningen. Jeg har valgt å implementere en løsning som er mer lik i utforming som programkode 1.3.11 a), men følgelig tilpasset strenger.
+    // stringbuilder og appends er erstattet av å manuelt lage en ut streng, som fylles med hjelp while løkker.
     public static String flett(String s, String t) {
-        throw new UnsupportedOperationException();
+        int sLengde = s.length();  // Lengden på begge strengene
+        int tLengde = t.length();
+        String ut = "";            // Starter å lage en ut-streng
+        int i = 0;                  // Hjelpevariabler til bruk i while løkkene
+        int j = 0;
+        while (i < sLengde && j < tLengde) {       // While løkke som kjører strengene i tandem, frem til en av dem har nådd slutten
+            ut += s.charAt(i);
+            ut += t.charAt(j);                      // Starter å fylle ut-strengen med innehold fra annenhver streng
+            i++;
+            j++;                                    // Inkrementerer begge hjelpevariablene som holder styr på hvor langt vi er kommet i strengen
+        }
+        while (i < sLengde) {                       // Deretter har jeg de følgende linjene implementert en while løkke for den av strengene som er lengre enn den andre.
+            ut += s.charAt(i);
+            i++;
+        }
+        while (j < tLengde) {
+            ut += t.charAt(j);
+            j++;
+        }
+        return ut;                              // Returnerer ut strengen
     }
 
     /// 7b)
