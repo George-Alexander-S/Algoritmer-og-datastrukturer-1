@@ -78,7 +78,7 @@ Resten kom relativt raskt på plass.
 
 Oppgave 5:
 
-Denne oppgaven har jeg løst ved å bruke en litt modifisert variant av programkode 1.3.13 b) fra kompendiet.
+Denne oppgaven har jeg løst ved å bruke en litt modifisert variant av programkode 1.3.13 d) fra kompendiet.
 Ingen store problemer.
 
 Oppgave 7a:

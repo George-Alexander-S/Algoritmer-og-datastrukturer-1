@@ -227,8 +227,8 @@ public class Oblig1 {
 
 
     ///// Oppgave 5 //////////////////////////////////////
-    // Denne oppgaven ble greit løst med en litt modifisert versjon av kompendiets programkode 1.3.13 b)
-    public static void rotasjon(char[] a) {     // en lett modifisert variant av kompendiets programkode 1.3.13 b)
+    // Denne oppgaven ble greit løst med en litt modifisert versjon av kompendiets programkode 1.3.13 d)
+    public static void rotasjon(char[] a) {     // en lett modifisert variant av kompendiets programkode 1.3.13 d)
 
         int enEnhet = 1;                                            // Denne brukes da vi kun skal rotere med én enhet.
         int n = a.length;                                           // instansierer lengden på arrayet.
