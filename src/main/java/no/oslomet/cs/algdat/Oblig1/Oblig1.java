@@ -278,27 +278,28 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        String ut = "";
-        int sLengde = s.length;
-        int lengst = 0;
-        for (int i = 0; i < sLengde; i++) {
+        String ut = "";             // Starter ut strengen
+        int antallOrd = s.length;     // Finner hvor mange ord det er i "string arrayaet". Dette blir viktig for den ene for-løkken
+        int lengsteOrd = 0;             // Variabel for det lengste ordet i arrayet. Dette blir viktig for den andre for-løkken
+        for (int i = 0; i < antallOrd; i++) {     // Denne for løkken bruker jeg for å finne det lengste ordet, vil da oppdatere variabelen lengst.
             int ordlengde = s[i].length();
-            if (ordlengde > lengst) {
-                lengst = ordlengde;
+            if (ordlengde > lengsteOrd) {
+                lengsteOrd = ordlengde;
             }
         }
-        if (sLengde == 0) {
+        if (antallOrd == 0) {     // Dersom arrayet er tomt, så returnerer den bare en tom streng ut.
             ut += "";
         }
 
-        for (int i = 0; i < lengst; i++) {
-            for (int j = 0; j < s.length; j++) {
-                if (s[j].length() > i) {
-                    ut += s[j].charAt(i);
+        for (int i = 0; i < lengsteOrd; i++) {      // i itererer opp til det lengste ordet i arrayet.
+            for (int j = 0; j < antallOrd; j++) { // j itererer forbi antallet ord i arrayet.
+                if (s[j].length() > i) {        // Sjekker at lengden på nåværende ord er større enn nåværende posisjon av i.
+                                                // Da hopper man pent over de chars man allerede har skrevet ut, samtidig som man takler eventuelle tomme strenger.
+                    ut += s[j].charAt(i);       // sender til ut Stringen dersom if'en slår til.
                 }
             }
         }
-        return ut;
+        return ut;                              // Returnerer ut strengen jeg har bygd.
     }
 
     ///// Oppgave 8 //////////////////////////////////////

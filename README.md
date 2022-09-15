@@ -35,7 +35,13 @@ tabellen ferdig sortert.
 
 Angående gjennomsnittet:
 Denne metoden tror jeg er mindre effektiv enn andre maks metoder, da den i tillegg til
-å sammenligne elementer i tabellen, i tillegg skal stokke om for å sende de bakerst.
+å sammenligne elementer i tabellen, i tillegg skal stokke om for å sende de bakerst. Etter egne forsøk med tabeller av
+ulike størrelser, med en gang tabellstørrelsen overstiger 6, så blir det i snitt 3 bytter.
+Med 9 tall i tabellen er det 6 bytter i snitt. Antallet bytter øker ekstremt fort med antall tall i tabellen. Med 20
+tall er vi oppe i 16 bytter i snitt. 
+
+Jeg testet en tabell med 200 tall. I 5000 forskjellige permutasjoner. Det gav 194 bytter i snitt. Min konklusjon er at 
+metoden er hårreisende inneffektiv.
 
 Oppgave 2:
 
@@ -73,3 +79,17 @@ Resten kom relativt raskt på plass.
 Oppgave 5:
 
 Denne oppgaven har jeg løst ved å bruke en litt modifisert variant av programkode 1.3.13 b) fra kompendiet.
+Ingen store problemer.
+
+Oppgave 7a:
+
+Ble løst med en kode som lignet litt på kompendiets programkode 1.3.11 a), men tilpasset strenger.
+Oppgaven ble løst med while løkker og charAt metoden.
+
+Oppgave 7b:
+
+Ved siden av oppgave 4 var nok dette den oppgaven jeg sleit mest med. Essensen var at jeg tenkte motsatt om hvilken
+løkke som skulle iterere hva. Da jeg snudde det riktig vei, altså til at moderløkken skulle iterere i forhold til lengden
+for det lengste ordet, og at den interne løkken skulle iterere forbi antallet ord, så kom jeg nærmere fungerende kode.
+if setningen i den indre løkken tar for seg s av j. Og dersom lengden av dette ordet, er lengre enn i's nåværende posisjon,
+så skriver den charen (fra posisjon i) til ut variabelen.
