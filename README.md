@@ -7,7 +7,7 @@ Oppgaven er levert av følgende student:
 
 # Arbeidsfordeling
 
-
+Dette er en solo-innlevering.
 
 # Oppgavebeskrivelse
 Her følger en kort beskrivelse av hvordan hver oppgave har blitt løst.
