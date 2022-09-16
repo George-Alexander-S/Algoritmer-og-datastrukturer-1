@@ -35,12 +35,11 @@ tabellen ferdig sortert.
 
 Angående gjennomsnittet:
 Denne metoden tror jeg er mindre effektiv enn andre maks metoder, da den i tillegg til
-å sammenligne elementer i tabellen, i tillegg skal stokke om for å sende de bakerst. Etter egne forsøk med tabeller av
-ulike størrelser, med en gang tabellstørrelsen overstiger 6, så blir det i snitt 3 bytter.
+å sammenligne elementer i tabellen, i tillegg skal stokke om for å sende de bakerst. Jeg har testet med random permutasjoner av tabeller
+i ulike størrelser. Med tabellstørrelse 6, så blir det i snitt 3 bytter.
 Med 9 tall i tabellen er det 6 bytter i snitt. Antallet bytter øker ekstremt fort med antall tall i tabellen. Med 20
 tall er vi oppe i 16 bytter i snitt. 
-
-Jeg testet en tabell med 200 tall. I 5000 forskjellige permutasjoner. Det gav 194 bytter i snitt. Min konklusjon er at 
+En tabell med 200 tall, testet i 5000 forskjellige permutasjoner gav 194 bytter i snitt. Min konklusjon er at 
 metoden er hårreisende inneffektiv.
 
 Oppgave 2:
